@@ -42,6 +42,11 @@ jobs:
     inputs:
       repo: CloneRepo.outputs.repo
       model: Handwrite.outputs.handwrite
+    outputs:
+      repo:
+        type: dataset
+        with:
+          ref: model-handwrite
     uses: script@v1
     with:
       script: |-

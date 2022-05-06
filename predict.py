@@ -92,4 +92,4 @@ def load_and_predict(path):
     resized_image = cv2.resize( strictedImg_resized, dsize = (edge * 2, edge * 2) )
     showImages_1line( [_image, strictedImg, resized_image], [ "gốc","qua tiền xử lý","resize 8x8"])
 
-load_and_predict("7.jpg")
+load_and_predict("/inputs/repo/7.jpg")
