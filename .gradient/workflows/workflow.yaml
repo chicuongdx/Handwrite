@@ -43,6 +43,9 @@ jobs:
     uses: script@v1
     with:
       script: |-
-        pip install open-cv
+        pip install opencv-python
+        pip install scipy==1.3.3
+        pip install Pillow==6.2.1
+        pip install matplotlib
         python /inputs/repo/run_predict.py
       image: tensorflow/tensorflow:1.14.0-py3
