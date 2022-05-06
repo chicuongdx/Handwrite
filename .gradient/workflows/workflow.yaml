@@ -28,5 +28,6 @@ jobs:
     with:
       script: |-
         pip install sklearn
+        pip install matplotlib
         python /inputs/repo/pretrainedmodel.py
       image: tensorflow/tensorflow:1.14.0-py3
