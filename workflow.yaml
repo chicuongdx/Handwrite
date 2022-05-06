@@ -1,0 +1,39 @@
+'on':
+  github:
+    branches:
+      only: main
+jobs:
+  CloneRepo:
+    uses: git-checkout@v1
+    with:
+      ref: context.event.github.ref
+      url: context.event.github.url
+    outputs:
+      handwrite:
+        type: volume
+    resources:
+      instance-type: C4
+  HandWrite:
+    needs:
+      - Clonerepo
+    inputs:
+      handwrite: CloneRepo.outputs.handwrite
+    outputs:
+      modelHandwrite:
+        type: dataset
+        with:
+          ref: model-handwrite
+    resources:
+      instance-type: P4000
+    uses: script@v1
+    with:
+      image: tensorflow/tensorflow:1.14.0-gpu-py3
+      script: |-
+        pip install sklearn
+        cd /input/handwrite
+        python pretrained-model.py
+context:
+  event:
+    github:
+      ref: 443f177fc6d3065dd96ff29f9eb880369f9d1382
+      url: https://github.com/chicuongdx/Handwrite
