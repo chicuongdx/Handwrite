@@ -11,7 +11,7 @@ jobs:
       handwrite:
         type: volume
     resources:
-      instance-type: C4
+      instance-type: C5
   HandWrite:
     needs:
       - Clonerepo
@@ -23,7 +23,7 @@ jobs:
         with:
           ref: model-handwrite
     resources:
-      instance-type: P4000
+      instance-type: C5
     uses: script@v1
     with:
       image: tensorflow/tensorflow:1.14.0-gpu-py3

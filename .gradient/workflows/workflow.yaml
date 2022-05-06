@@ -4,22 +4,30 @@
       only: main
 jobs:
   CloneRepo:
-    resources:
-      instance-type: C5
-    outputs:
-      repo:
-        type: volume
     uses: git-checkout@v1
     with:
       url: context.event.github.url
-  HelloWorld:
+    outputs:
+      repo:
+        type: volume
     resources:
       instance-type: C5
+  HandWrite:
     needs:
-      - CloneRepo
+      - Clonerepo
     inputs:
-      repo: CloneRepo.outputs.repo
+      handwrite: CloneRepo.outputs.repo
+    outputs:
+      modelHandwrite:
+        type: dataset
+        with:
+          ref: model-handwrite
+    resources:
+      instance-type: C5
     uses: script@v1
     with:
-      script: python /inputs/repo/hello.py
-      image: tensorflow/tensorflow:1.14.0-py3
+      image: tensorflow/tensorflow:1.14.0-gpu-py3
+      script: |-
+        pip install sklearn
+        cd /input/handwrite
+        python pretrained-model.py
