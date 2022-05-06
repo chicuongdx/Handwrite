@@ -13,6 +13,12 @@ jobs:
     resources:
       instance-type: C5
   HandWrite:
+    uses: script@v1
+    with:
+      image: tensorflow/tensorflow:1.14.0-gpu-py3
+      script: |-
+        cd /input/handwrite
+        python pretrained-model.py
     needs:
       - Clonerepo
     inputs:
@@ -24,10 +30,8 @@ jobs:
           ref: model-handwrite
     resources:
       instance-type: C5
-    uses: script@v1
-    with:
-      image: tensorflow/tensorflow:1.14.0-gpu-py3
-      script: |-
-        pip install sklearn
-        cd /input/handwrite
-        python pretrained-model.py
+context:
+  event:
+    github:
+      ref: 0defa7bfb8a4d2b69640c45332bf43be09739d8c
+      url: https://github.com/chicuongdx/Handwrite
