@@ -20,11 +20,11 @@ jobs:
     inputs:
       repo: CloneRepo.outputs.repo
     outputs:
-      modelHandwrite:
+      handwrite:
         type: dataset
         with:
           ref: model-handwrite
     uses: script@v1
     with:
-      script: python /inputs/repo/pretrained-model.py
+      script: python /inputs/repo/pretrainedmodel.py
       image: tensorflow/tensorflow:1.14.0-py3

@@ -28,5 +28,5 @@ disp = metrics.plot_confusion_matrix(clf, X_test, y_test)
 disp.figure_.suptitle("Confusion Matrix")
 print(f"Confusion matrix:\n{disp.confusion_matrix}")
 
-filename = '/outputs/modelHandwrite/model_svm.sav'
+filename = '/outputs/handwrite/model_svm.sav'
 pickle.dump(clf, open(filename, 'wb'))
