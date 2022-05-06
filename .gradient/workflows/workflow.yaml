@@ -26,5 +26,7 @@ jobs:
           ref: model-handwrite
     uses: script@v1
     with:
-      script: python /inputs/repo/pretrainedmodel.py
+      script: |-
+        pip install sklearn
+        python /inputs/repo/pretrainedmodel.py
       image: tensorflow/tensorflow:1.14.0-py3
