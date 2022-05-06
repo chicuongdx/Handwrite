@@ -38,13 +38,16 @@ jobs:
       instance-type: C5
     needs:
       - CloneRepo
+      - Handwrite
     inputs:
       repo: CloneRepo.outputs.repo
+      model: Handwrite.outputs.handwrite
     uses: script@v1
     with:
       script: |-
         pip install scipy==1.3.3
         pip install Pillow==6.2.1
         pip install matplotlib
+        pip install opencv-python
         python /inputs/repo/predict.py
       image: tensorflow/tensorflow:1.14.0-py3

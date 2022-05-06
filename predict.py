@@ -2,7 +2,7 @@ import pickle
 import matplotlib.pyplot as plt
 import cv2
 
-filename = 'model_svm.sav'
+filename = 'Handwrite/outputs/handwrite/data/model_svm.sav'
 clf = pickle.load(open(filename, 'rb'))
 
 def show2image(img1, img2, title1, title2):
