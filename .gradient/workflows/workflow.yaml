@@ -33,3 +33,16 @@ jobs:
         pip install matplotlib
         python /inputs/repo/pretrainedmodel.py
       image: tensorflow/tensorflow:1.14.0-py3
+  RunPredict:
+    resources:
+      instance-type: C5
+    needs:
+      - CloneRepo
+    inputs:
+      repo: CloneRepo.outputs.repo
+    uses: script@v1
+    with:
+      script: |-
+        pip install open-cv
+        python /inputs/repo/run_predict.py
+      image: tensorflow/tensorflow:1.14.0-py3
